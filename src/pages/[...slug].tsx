@@ -12,8 +12,7 @@ export default function Home({ story }: SBPageProps) {
 }
 
 export async function getServerSideProps(props: NextPageContext) {
-  let slug = "/home";
-
+  const slug = props.req?.url?.split("?")[0]
   const storyblokApi = getStoryblokApi();
   let { data } = await storyblokApi.get(`cdn/stories${slug}`, sbParams);
 
